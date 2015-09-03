@@ -34,24 +34,24 @@ file(GLOB common_headers src/common/math.h src/common/matrix.h src/common/matrix
 add_library(retin_algebra ${algebra_sources})
 add_library(retin_core ${core_sources} ${document_sources})
 
-add_executable(gossip_pca src/main.cpp ${common_sources})
+add_executable(agpca src/main.cpp ${common_sources})
 
 set(retin_libs pthread retin_core retin_algebra)
 
-target_link_libraries(gossip_pca ${retin_libs})
+target_link_libraries(agpca ${retin_libs})
 
 
 find_package(PNG)
 if(PNG_FOUND)
 	include_directories(${PNG_INCLUDE_DIR})
-	target_link_libraries(gossip_pca ${PNG_LIBRARIES} )
+	target_link_libraries(agpca ${PNG_LIBRARIES} )
 	add_definitions(-DRETIN_ENABLE_PNG)
 endif(PNG_FOUND)
 
 find_package(JPEG)
 if(JPEG_FOUND)
 	include_directories(${JPEG_INCLUDE_DIR})
-	target_link_libraries(gossip_pca ${JPEG_LIBRARIES} )
+	target_link_libraries(agpca ${JPEG_LIBRARIES} )
 	add_definitions(-DRETIN_ENABLE_JPEG)
 endif(JPEG_FOUND)
 

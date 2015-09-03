@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jfellus/Bureau/agpca
+CMAKE_SOURCE_DIR = /home/jfellus/Documents/These/prog/agpca
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jfellus/Bureau/agpca
+CMAKE_BINARY_DIR = /home/jfellus/Documents/These/prog/agpca
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jfellus/Bureau/agpca/CMakeFiles /home/jfellus/Bureau/agpca/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jfellus/Documents/These/prog/agpca/CMakeFiles /home/jfellus/Documents/These/prog/agpca/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jfellus/Bureau/agpca/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jfellus/Documents/These/prog/agpca/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -99,17 +99,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named gossip_pca
+# Target rules for targets named agpca
 
 # Build rule for target.
-gossip_pca: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gossip_pca
-.PHONY : gossip_pca
+agpca: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 agpca
+.PHONY : agpca
 
 # fast build rule for target.
-gossip_pca/fast:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/build
-.PHONY : gossip_pca/fast
+agpca/fast:
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/build
+.PHONY : agpca/fast
 
 #=============================================================================
 # Target rules for targets named retin_algebra
@@ -142,7 +142,7 @@ src/common/math.o: src/common/math.cpp.o
 
 # target to build an object file
 src/common/math.cpp.o:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/math.cpp.o
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/math.cpp.o
 .PHONY : src/common/math.cpp.o
 
 src/common/math.i: src/common/math.cpp.i
@@ -150,7 +150,7 @@ src/common/math.i: src/common/math.cpp.i
 
 # target to preprocess a source file
 src/common/math.cpp.i:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/math.cpp.i
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/math.cpp.i
 .PHONY : src/common/math.cpp.i
 
 src/common/math.s: src/common/math.cpp.s
@@ -158,7 +158,7 @@ src/common/math.s: src/common/math.cpp.s
 
 # target to generate assembly for a file
 src/common/math.cpp.s:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/math.cpp.s
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/math.cpp.s
 .PHONY : src/common/math.cpp.s
 
 src/common/matrix_double.o: src/common/matrix_double.cpp.o
@@ -166,7 +166,7 @@ src/common/matrix_double.o: src/common/matrix_double.cpp.o
 
 # target to build an object file
 src/common/matrix_double.cpp.o:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/matrix_double.cpp.o
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/matrix_double.cpp.o
 .PHONY : src/common/matrix_double.cpp.o
 
 src/common/matrix_double.i: src/common/matrix_double.cpp.i
@@ -174,7 +174,7 @@ src/common/matrix_double.i: src/common/matrix_double.cpp.i
 
 # target to preprocess a source file
 src/common/matrix_double.cpp.i:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/matrix_double.cpp.i
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/matrix_double.cpp.i
 .PHONY : src/common/matrix_double.cpp.i
 
 src/common/matrix_double.s: src/common/matrix_double.cpp.s
@@ -182,7 +182,7 @@ src/common/matrix_double.s: src/common/matrix_double.cpp.s
 
 # target to generate assembly for a file
 src/common/matrix_double.cpp.s:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/matrix_double.cpp.s
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/matrix_double.cpp.s
 .PHONY : src/common/matrix_double.cpp.s
 
 src/common/matrix_float.o: src/common/matrix_float.cpp.o
@@ -190,7 +190,7 @@ src/common/matrix_float.o: src/common/matrix_float.cpp.o
 
 # target to build an object file
 src/common/matrix_float.cpp.o:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/matrix_float.cpp.o
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/matrix_float.cpp.o
 .PHONY : src/common/matrix_float.cpp.o
 
 src/common/matrix_float.i: src/common/matrix_float.cpp.i
@@ -198,7 +198,7 @@ src/common/matrix_float.i: src/common/matrix_float.cpp.i
 
 # target to preprocess a source file
 src/common/matrix_float.cpp.i:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/matrix_float.cpp.i
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/matrix_float.cpp.i
 .PHONY : src/common/matrix_float.cpp.i
 
 src/common/matrix_float.s: src/common/matrix_float.cpp.s
@@ -206,7 +206,7 @@ src/common/matrix_float.s: src/common/matrix_float.cpp.s
 
 # target to generate assembly for a file
 src/common/matrix_float.cpp.s:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/matrix_float.cpp.s
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/matrix_float.cpp.s
 .PHONY : src/common/matrix_float.cpp.s
 
 src/common/multithread.o: src/common/multithread.cpp.o
@@ -214,7 +214,7 @@ src/common/multithread.o: src/common/multithread.cpp.o
 
 # target to build an object file
 src/common/multithread.cpp.o:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/multithread.cpp.o
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/multithread.cpp.o
 .PHONY : src/common/multithread.cpp.o
 
 src/common/multithread.i: src/common/multithread.cpp.i
@@ -222,7 +222,7 @@ src/common/multithread.i: src/common/multithread.cpp.i
 
 # target to preprocess a source file
 src/common/multithread.cpp.i:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/multithread.cpp.i
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/multithread.cpp.i
 .PHONY : src/common/multithread.cpp.i
 
 src/common/multithread.s: src/common/multithread.cpp.s
@@ -230,7 +230,7 @@ src/common/multithread.s: src/common/multithread.cpp.s
 
 # target to generate assembly for a file
 src/common/multithread.cpp.s:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/multithread.cpp.s
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/multithread.cpp.s
 .PHONY : src/common/multithread.cpp.s
 
 src/common/utils.o: src/common/utils.cpp.o
@@ -238,7 +238,7 @@ src/common/utils.o: src/common/utils.cpp.o
 
 # target to build an object file
 src/common/utils.cpp.o:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/utils.cpp.o
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/utils.cpp.o
 .PHONY : src/common/utils.cpp.o
 
 src/common/utils.i: src/common/utils.cpp.i
@@ -246,7 +246,7 @@ src/common/utils.i: src/common/utils.cpp.i
 
 # target to preprocess a source file
 src/common/utils.cpp.i:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/utils.cpp.i
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/utils.cpp.i
 .PHONY : src/common/utils.cpp.i
 
 src/common/utils.s: src/common/utils.cpp.s
@@ -254,7 +254,7 @@ src/common/utils.s: src/common/utils.cpp.s
 
 # target to generate assembly for a file
 src/common/utils.cpp.s:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/common/utils.cpp.s
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/utils.cpp.s
 .PHONY : src/common/utils.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -262,7 +262,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/main.cpp.o
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -270,7 +270,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/main.cpp.i
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -278,7 +278,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/gossip_pca.dir/build.make CMakeFiles/gossip_pca.dir/src/main.cpp.s
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/retin/toolbox/algebra/core.o: src/retin/toolbox/algebra/core.c.o
@@ -599,8 +599,8 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... agpca"
 	@echo "... edit_cache"
-	@echo "... gossip_pca"
 	@echo "... rebuild_cache"
 	@echo "... retin_algebra"
 	@echo "... retin_core"
