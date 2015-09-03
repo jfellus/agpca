@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jfellus/Bureau/agpca
+CMAKE_SOURCE_DIR = /users/jerofell/agpca
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jfellus/Bureau/agpca
+CMAKE_BINARY_DIR = /users/jerofell/agpca
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jfellus/Bureau/agpca/CMakeFiles /home/jfellus/Bureau/agpca/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/jerofell/agpca/CMakeFiles /users/jerofell/agpca/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jfellus/Bureau/agpca/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/jerofell/agpca/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
