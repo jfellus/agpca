@@ -31,6 +31,7 @@ int n = get_config("n", 10000);
 int D = get_config("D", 200);
 
 
+bool DEBUG = get_config("DEBUG", true);
 
 
 
@@ -249,20 +250,26 @@ void compute_errors() {
 	if(last_receiver!=-1) node[last_receiver].compute_estimate();
 
 	if(last_receiver>=0 && last_receiver<1) {
-	Matrix compact;
-	Matrix Xrec;
-	Matrix Crec;
+		if(DEBUG) {
+			Matrix compact;
+			Matrix Xrec;
+			Matrix Crec;
 
-	compact.project(X, node[last_receiver].outU);
-	Xrec.unproject(compact, node[last_receiver].outU);
-	Crec.covariance(Xrec);
+			compact.project(X, node[last_receiver].outU);
+			Xrec.unproject(compact, node[last_receiver].outU);
+			Crec.covariance(Xrec);
 
-	float norm = G.n2();
-	float ERR = G.l2(Crec)/norm;
-	DBGV(ERR);
+			float norm = G.n2();
+			float ERR = G.l2(Crec)/norm;
+			DBGV(ERR);
 
-	fappend(f_E, fmt("%u %f\n", t, ERR*100));
-	fflush(f_E);
+			fappend(f_E, fmt("%u %f\n", t, ERR*100));
+			fflush(f_E);
+		}
+		else {
+			node[0].outU.save(fmt("data/U_%08d.fvec", t));
+			node[0].outL.save(fmt("data/L_%08d.fvec", t));
+		}
 	}
 	//misc_errors();
 }
@@ -350,27 +357,29 @@ int main(int argc, char **argv) {
 		X -= mu;
 		DBG_END();
 
-		DBG_START("Compute global PCA");
+		if(DEBUG) {
+			DBG_START("Compute global PCA");
 			Matrix U,L;
-DDD(		X.PCA(U,L, q);				)
-DDD(		G.covariance(X);		)
-DDD(		Y.project(X,U);			)
-DDD( 		Xrec.unproject(Y,U);    )
-DDD(		K.covariance(Xrec);		)
-DBG(G.height << "x" << G.width);
-DBG(K.height << "x" << K.width);
+			DDD(		X.PCA(U,L, q);				)
+			DDD(		G.covariance(X);		)
+			DDD(		Y.project(X,U);			)
+			DDD( 		Xrec.unproject(Y,U);    )
+			DDD(		K.covariance(Xrec);		)
+			DBG(G.height << "x" << G.width);
+			DBG(K.height << "x" << K.width);
 			float norm = G.n2();
 			float ERR_pca = G.l2(K)/norm*100;
 			DBG("ERROR PCA : " << ERR_pca);
 			fappend("data/ERR_pca.txt", fmt("0 %f\n", ERR_pca));
 			fappend("data/ERR_pca.txt", fmt("4000 %f\n", ERR_pca));
-		DBG_END();
+			DBG_END();
+		}
 
 		////////////////////////
 
 		DBG_START("Local PCA");
 		for(int i=0; i<N; i++) {DBG_PERCENT(i/N);node[i].local_pca();}
-		compute_errors();
+		if(DEBUG) compute_errors();
 		DBG_END();
 
 		for(int i=0; i<N; i++) node[i].init_gossip();
