@@ -136,6 +136,10 @@ public:
 	Matrix C_rec;
 	Matrix U,L;
 
+	Matrix mu2;
+	Matrix one;
+
+
 	float nb_projs_kept;
 
 	float w;
@@ -144,6 +148,13 @@ public:
 	void init(Matrix& X, int first, int n) {
 		this->n = n;
 		this->X.create_ref(X.get_row(first),D,n);
+		U.init(q,D);
+		L.init(q,1);
+		outL.init(q,1);
+		outU.init(q,D);
+		mu2.init(1,D);
+		one.init(1,1); one.data[0] = 1;
+
 	}
 
 	~Node() {}
@@ -176,8 +187,7 @@ public:
 
 	void compute_estimate() {
 		outL = L; outL /= w;
-		Matrix mu2(1,D); for(int i=0; i<D; i++) mu2[i] = mu[i]/w;
-		Matrix one(1,1); one.data[0] = 1;
+		for(int i=0; i<D; i++) mu2[i] = mu[i]/w;
 		outU = U;
 		eig_of_sum(outU, outL, mu2, one);
 	}
