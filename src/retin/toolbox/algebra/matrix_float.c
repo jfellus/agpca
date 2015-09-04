@@ -949,6 +949,33 @@ int compare_sort_float(const void * a, const void * b){
     return 0;
 }
 
+void matrix_sortEig_float_t (float* A,float* d,size_t n) {
+	size_t i,j;
+	struct struct_sort_float * sSort = (struct struct_sort_float *)malloc(n*sizeof(struct struct_sort_float));
+	float * Atemp = (float *)malloc(n*n*sizeof(float));
+
+	memcpy(Atemp, A, n*n*sizeof(float));
+
+	for(i = 0 ; i < n ; i++)
+	{
+		sSort[i].i = i;
+		sSort[i].val = d[i];
+	}
+
+	qsort(sSort, n, sizeof(struct struct_sort_float), compare_sort_float);
+
+	// Column vectors !!!!!
+	for(i = 0 ; i < n ; i++)
+	{
+		d[i] = sSort[i].val;
+		for(j = 0; j<n; j++) A[n*j + i] = Atemp[n*j + sSort[i].i];
+	}
+
+	free(Atemp);
+	free(sSort);
+}
+
+
 void matrix_sortEig_float (float* A,float* d,size_t n)
 {
     size_t i;

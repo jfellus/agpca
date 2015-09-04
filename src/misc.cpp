@@ -6,6 +6,13 @@
  */
 
 
+#include "common/utils.h"
+
+
+void sys(const std::string& x) {
+	if(system(x.c_str())){}
+}
+
 
 
 ///////////
@@ -76,8 +83,8 @@ void generateData(const char* s) {
 void init(const char* datafile) {
 	DBG("INIT");
 	DBGV(NBTHREADS);
-	system("rm -rf data/*");
-	system("rm -rf plots/*");
+	sys("rm -rf data/*");
+	sys("rm -rf plots/*");
 
 	if(datafile[0]=='*') {
 		generateData(&datafile[1]);
@@ -86,12 +93,6 @@ void init(const char* datafile) {
 	if(LIMIT_NDATA!=-1 && X.height > LIMIT_NDATA) X.height = LIMIT_NDATA;
 	n = X.height;
 	D = X.width;
-
-	global_mu.create(D,1);
-
-	FULL_GRAM.create(D,D);
-	FULL_COVARIANCE_th.create(D,D);
-
 
 	create_network();
 
@@ -118,3 +119,32 @@ void init(const char* datafile) {
 void deinit() {
 	delete[] node;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+void misc_errors() {
+	// Relative Error to Consensus
+	float FCnorm = G.n2();
+	float REC = 0;
+	for(int i=0; i<N; i++) REC += G.l2(node[i].C_rec);
+	REC /= (N*FCnorm);
+
+	// Pair-Wise Error
+	float PWE = 0;
+	for(int i=0; i<N; i++) for(int j=0; j<N; j++) PWE += node[i].C_rec.l2(node[j].C_rec);
+	PWE /= N*N;
+
+	fappend("data/stats/PWE.txt", fmt("%f\n", PWE));
+}
+
+

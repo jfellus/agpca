@@ -39,17 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /home/jfellus/Documents/These/prog/agpca
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/jfellus/Documents/These/prog/agpca
-=======
-CMAKE_SOURCE_DIR = /users/jerofell/agpca
-
-# The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /users/jerofell/agpca
->>>>>>> 6b18b96228f2ed39a1fb0f6b6419dd3311e33970
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -76,15 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jfellus/Documents/These/prog/agpca/CMakeFiles /home/jfellus/Documents/These/prog/agpca/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jfellus/Documents/These/prog/agpca/CMakeFiles 0
-=======
-	$(CMAKE_COMMAND) -E cmake_progress_start /users/jerofell/agpca/CMakeFiles /users/jerofell/agpca/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /users/jerofell/agpca/CMakeFiles 0
->>>>>>> 6b18b96228f2ed39a1fb0f6b6419dd3311e33970
 .PHONY : all
 
 # The main clean target
@@ -149,6 +136,30 @@ retin_core: cmake_check_build_system
 retin_core/fast:
 	$(MAKE) -f CMakeFiles/retin_core.dir/build.make CMakeFiles/retin_core.dir/build
 .PHONY : retin_core/fast
+
+src/common/eigen.o: src/common/eigen.cpp.o
+.PHONY : src/common/eigen.o
+
+# target to build an object file
+src/common/eigen.cpp.o:
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/eigen.cpp.o
+.PHONY : src/common/eigen.cpp.o
+
+src/common/eigen.i: src/common/eigen.cpp.i
+.PHONY : src/common/eigen.i
+
+# target to preprocess a source file
+src/common/eigen.cpp.i:
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/eigen.cpp.i
+.PHONY : src/common/eigen.cpp.i
+
+src/common/eigen.s: src/common/eigen.cpp.s
+.PHONY : src/common/eigen.s
+
+# target to generate assembly for a file
+src/common/eigen.cpp.s:
+	$(MAKE) -f CMakeFiles/agpca.dir/build.make CMakeFiles/agpca.dir/src/common/eigen.cpp.s
+.PHONY : src/common/eigen.cpp.s
 
 src/common/math.o: src/common/math.cpp.o
 .PHONY : src/common/math.o
@@ -617,6 +628,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... retin_algebra"
 	@echo "... retin_core"
+	@echo "... src/common/eigen.o"
+	@echo "... src/common/eigen.i"
+	@echo "... src/common/eigen.s"
 	@echo "... src/common/math.o"
 	@echo "... src/common/math.i"
 	@echo "... src/common/math.s"

@@ -180,6 +180,8 @@ void	matrix_eigTrig_values_float (float* d,float* e,size_t n);
 void	matrix_eigSym_float (float* A,float* d,size_t n);
 /*! Trie dans l'ordre décroissant les valeurs propres. */
 void	matrix_sortEig_float (float* A,float* d,size_t n);
+/*! Trie des VECTEURS COLONNES !!! dans l'ordre décroissant les valeurs propres. */
+void matrix_sortEig_float_t(float* A, float* d, size_t n);
 /*! Calcul de la plus grande valeur propre. */
 int     matrix_eigMax_float (float* l,float* v,float* M,size_t n);
 int     matrix_eigMaxSym_float (float* l,float* v,float* M,size_t n);
