@@ -7,7 +7,9 @@
 
 #include "matrix.h"
 #include "math.h"
+#include "the_eigen.h"
 
+#define MAX(a,b) ((a) > (b) ? (a) : (b))
 
 static MatrixFloat* cur_cov_mt_C;
 static MatrixFloat* cur_cov_mt_X;
@@ -33,5 +35,40 @@ void MatrixFloat::covariance_mt(MatrixFloat& X) {
 
 void MatrixFloat::rand(float min, float max) {
 	for(int i=0; i<width*height; i++)
-		data[i] = frand(min,max);
+		data[i] = frand(min ,max);
+}
+
+
+// OK MATLAB !
+void MatrixFloat::QR(MatrixFloat& R) {
+	if(!R.data) {R.init(width,width);}
+	::QR(*this,R,width,height);
+}
+
+// OK MATLAB !
+void MatrixFloat::QR(MatrixFloat& Q, MatrixFloat& R) {
+	if(!Q.data) { Q.init(width, height);}
+	if(!R.data) { R.init(width, width);}
+	::QR(*this, Q, R, width, height);
+}
+
+// OK MATLAB !
+void MatrixFloat::qr(MatrixFloat& Q, MatrixFloat& R) {
+	if(!Q.data) { Q.init(width, height);}
+	if(!R.data) { R.init(MIN(width, height), 1);}
+	::qr(*this, Q, R, width, height);
+}
+
+// OK MATLAB !
+void MatrixFloat::qr(MatrixFloat& R) {
+	if(!R.data) { R.init(MIN(width, height), 1);}
+	::qr(*this, R, width, height);
+}
+
+
+// OK MATLAB !
+void MatrixFloat::eigendecompose(MatrixFloat& U, MatrixFloat& L) {
+	if(!U.data) { U.init(height, height); U.clear(); }
+	if(!L.data) { L.init(height, 1); L.clear(); }
+	::eigendecompose(*this, U, L, height);
 }

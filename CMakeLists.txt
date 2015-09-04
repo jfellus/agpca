@@ -27,7 +27,7 @@ set(algebra_dir src/retin/toolbox/algebra)
 file(GLOB algebra_headers ${algebra_dir}/core.h ${algebra_dir}/vector_uchar.h ${algebra_dir}/vector_short.h ${algebra_dir}/vector_float.h ${algebra_dir}/vector_double.h ${algebra_dir}/matrix_float.h  ${algebra_dir}/matrix_double.h ${algebra_dir}/vector.h ${algebra_dir}/matrix.h  ${algebra_dir}/pca.h)
 file(GLOB algebra_sources ${algebra_dir}/core.c ${algebra_dir}/vector_uchar.c ${algebra_dir}/vector_short.c ${algebra_dir}/vector_float.c ${algebra_dir}/vector_double.c ${algebra_dir}/matrix_float.c ${algebra_dir}/matrix_double.c ${algebra_dir}/pca.cpp )
 
-file(GLOB common_sources src/common/math.cpp src/common/matrix.cpp src/common/multithread.cpp src/common/utils.cpp src/common/matrix_float.cpp src/common/matrix_double.cpp src/common/matrixdouble.cpp)
+file(GLOB common_sources src/common/math.cpp src/common/matrix.cpp src/common/multithread.cpp src/common/utils.cpp src/common/matrix_float.cpp src/common/matrix_double.cpp src/common/matrixdouble.cpp src/common/eigen.cpp)
 file(GLOB common_headers src/common/math.h src/common/matrix.h src/common/matrixdouble.h)
 
 

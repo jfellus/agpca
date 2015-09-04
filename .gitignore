@@ -5,3 +5,4 @@ config.properties
 lib/
 cmake_install.cmake
 Makefile
+data/

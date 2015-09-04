@@ -164,34 +164,9 @@ void Matrix::create_ref(float* data, size_t width, size_t height) {
 
 /** Creates a new empty shared matrix of dimensions  width x height */
 void Matrix::create(size_t width, size_t height, const char* shared_id) {
-	if(__SHARED_MATRIX_DISABLED) shared_id = NULL;
-
-	if(shared_id) {
-		bShared = true;
-		if(attach(shared_id)) {
-			if(this->width==width && this->height==height) 	return;
-			cout << "But matrix dimensions does not agree : reshaping ... ok\n";
-			delete_shared();
-		}
-		key = create_key(id);
-		try {
-			size_t* _data = (size_t*)create_shared_mem(key, width*height*sizeof(float) + 2*sizeof(size_t), &_shmid);
-			*_data++ = width;
-			*_data++ = height;
-			data = (float*)_data;
-			//this->clear();
-		} catch(...) {
-			data = 0;
-			cerr << "Couldn't allocate shared matrix " << shared_id << "\n";
-			unlink(id.c_str());
-			throw "Couldn't allocate shared matrix";
-		}
-	} else {
-		bShared = false;
-		data = new float[width*height];
-		//this->clear();
-	}
-
+	bShared = false;
+	data = new float[width*height];
+	bOwner = true;
 	this->width = width; this->height = height;
 }
 
@@ -201,19 +176,10 @@ void Matrix::create(size_t width, size_t height, const char* shared_id) {
 /** if this instance is the owner of the shared content, delete the whole shared matrix
  *  else destroy only the local reference to the shared matrix */
 Matrix::~Matrix() {
-	dealloc();
+	if(data) delete[] data;
 }
 
 void Matrix::dealloc() {
-	fflush(stdout);
-	if(!data) return;
-	if(!bShared) {
-		fflush(stdout);
-		delete data;
-	} else {
-		if(bOwner) delete_shared();
-		else detach();
-	}
 }
 
 void Matrix::realloc(size_t w, size_t h, const char* shared_id) {
@@ -288,6 +254,7 @@ void Matrix::dump(size_t nbrows, size_t nbcols) {
 		fflush(stdout);
 	}
 	putc('\n',stdout);
+	putc('\n',stdout);
 }
 
 bool Matrix::free_shared(const char* file) {
@@ -304,7 +271,10 @@ void Matrix::clear() {
 	memset(data, 0, width*height*sizeof(float));
 }
 
-void Matrix::operator=(const Matrix& m) {memcpy(this->data, m.data, sizeof(float)*width*height);}
+void Matrix::operator=(const Matrix& m) {
+	if(!this->data) create(m.width, m.height);
+	memcpy(this->data, m.data, sizeof(float)*width*height);
+}
 
 
 }
