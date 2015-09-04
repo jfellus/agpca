@@ -248,7 +248,7 @@ void compute_errors() {
 	if(last_sender!=-1) node[last_sender].compute_estimate();
 	if(last_receiver!=-1) node[last_receiver].compute_estimate();
 
-	if(last_receiver>=0 && last_receiver<10) {
+	if(last_receiver>=0 && last_receiver<1) {
 	Matrix compact;
 	Matrix Xrec;
 	Matrix Crec;
