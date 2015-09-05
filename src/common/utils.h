@@ -59,4 +59,7 @@ void fappend(FILE *f, const string& line);
 
 #define FATAL(x) do { DBG(x); exit(1); } while(0);
 
+#define __$(x) DBG(#x); x.dump()
+#define DDD(x) DBG(#x); x;
+
 #endif /* UTILS_H_ */

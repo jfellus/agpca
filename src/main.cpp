@@ -5,8 +5,7 @@
  *      Author: jfellus
  */
 #include "common/config.h"
-#define __$(x) DBG(#x); x.dump()
-#define DDD(x) DBG(#x); x;
+
 ////////////
 // PARAMS //
 ////////////
@@ -111,7 +110,8 @@ void eig_of_sum(Matrix& U1, Matrix& L1, Matrix& U2, Matrix& L2) {
 
 	Matrix X; X.make_h_block(A,B);
 	Matrix Xt = X.transpose();
-	Xt.PCA(U1,L1,L1.width);
+	X.dumpdim();
+	Xt.PCA_via_gram(U1,L1);
 }
 
 
@@ -166,6 +166,7 @@ public:
 		X.mean_row(mu);
 		X.PCA(U,L,q);
 		outU = U;outL = L;
+		DBG(id);
 	}
 
 
@@ -388,7 +389,7 @@ int main(int argc, char **argv) {
 		////////////////////////
 
 		DBG_START("Local PCA");
-		for(int i=0; i<N; i++) {DBG_PERCENT(i/N);node[i].local_pca();}
+		local_pca(N);
 		if(DEBUG) compute_errors();
 		DBG_END();
 

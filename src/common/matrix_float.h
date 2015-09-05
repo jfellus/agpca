@@ -303,11 +303,11 @@ public:
 		MatrixFloat G(height,height);
 		MatrixFloat UU(height,height);
 		MatrixFloat LL(height, 1);
-		G.gram(*this);
-		G.eigendecompose(UU, LL);
+DDD(		G.gram(*this); )
+DDD(		G.eigendecompose(UU, LL); )
 		L.clear();
 		for(int i=0; i<MIN(L.width,LL.width); i++) L[i] = LL[i];
-		U.XUL12(*this,UU,L);
+DDD(		U.XUL12(*this,UU,L); )
 	}
 
 	void PCA(MatrixFloat &U, MatrixFloat &L, int q) {
@@ -323,8 +323,8 @@ public:
 		else {
 			MatrixFloat C(width,width);
 			MatrixFloat UU,LL;
-			C.covariance(*this);
-			C.eigendecompose(UU,LL);
+	DDD(		C.covariance(*this); )
+DDD(			C.eigendecompose(UU,LL); )
 			for(int i=0; i<q; i++) {
 				L[i] = LL[i];
 				for(int j=0; j<width; j++) U[j*U.width+i] = UU[j*UU.width+i];
@@ -538,6 +538,9 @@ public:
 		putc('\n',stdout);
 	}
 
+	void dumpdim() {
+		std::cout << height << "x" << width << "\n";
+	}
 
 	////////
 	// IO //
